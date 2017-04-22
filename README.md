@@ -31,15 +31,17 @@
 <h1>Minimum Viable Product</h1>
    The MVP includes:
 <h2>Web Application</h2>
-• Create User Account
-• Logon
-• Search Books
-• Add Books
-• Track Time
-• Report Time
+<ul>
+  <li>Create User Account</li>
+  <li>Logon</li>
+  <li>Search Books</li>
+  <li>Add Books</li>
+  <li>Track Time</li>
+  <li>Report Time</li>
+</ul>
 <h2>Mobile Application</h2>
-• Logon
-• Track Time
+  <li>Logon</li>
+  <li>Track Time</li>
 <h1>Database Architecture</h1>
   </p>The MySQL database was selected due to the number of tables and the multitude of relationships between the tables.  But, to allow the system to grow with the number of users it would be recommended to partition some tables such as the table which log the users’ activities as it could balloon in size and cause performance issues.  Last, with the current schema, it will be relatively easy to add additional tables to support new functionality for the application.</p>
  
