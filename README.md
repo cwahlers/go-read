@@ -54,3 +54,101 @@ Currently there are no plans for being acquired but we are leaving all options o
 ![GO READ Reader](/assets/images/goread_reader_b.jpg "GO READ Reader")
 
 ![GO READ Parent](/assets/images/goread_parent.jpg "GO READ Parent")
+
+
+# Domain Model
+
+## Object: User
+
+### Attributes:
++ id: unique id (integer) which represents the user
++ email: user's e-mail address 
++ password: hashed password
++ first_name: user's first name
++ last_name: user's last name
++ parent: boolean field which identifies the user is also a parent
+
+### Functions and Methods:
++ createUser: add new user to the database
++ createPassword: creates hashed password
+
+### State:         
++ active: user is actively logged onto the application
+
+### Relationships
++
+ 
+
+## Object: Reader
+### Attributes:
++ user_id: unique id which identifies the user
+
+
+### Functions and Methods:
++ logTimer: based on timer, log the time the user read
++ logManualEntyr: manually enter time read
+
+### State:
+
+### Relationships
+ 
+
+
+## Object: Book
+
+### Attributes:
++ id: unique id
++ title: title of the book
++ total_pages: total number of pages in the book
+
+### Functions and Methods:
++ searchBooks: find books using Google book api 
+
+### State:         
+
+### Relationships
++ user_books: links the books associated with the user
+
+
+## Object: Parent
+
+### Attributes:
++ children: one or more children
+
+### Functions and Methods:
++ addChild: creates and links child to the parents account
++ removeChild: removes link between the child and parent
+
+### State:         
++
+
+### Relationships
++ parent_child: 
+
+## Object:
+
+### Attributes:
++ 
+
+### Functions and Methods:
++ 
+
+### State:         
++
+
+### Relationships
++
+
+## Object:
+
+### Attributes:
++ 
+
+### Functions and Methods:
++ 
+
+### State:         
++
+
+### Relationships
++
