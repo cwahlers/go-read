@@ -1,0 +1,164 @@
+   <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h2 class="section-heading">My Kids</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>e-mail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each kids}}
+                                        <tr>
+                                            <td> {{this.username}} </td>
+                                            <td> {{this.email}} </td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="device-container">
+                        <!-- <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen"> -->
+                                    
+
+                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                                    <!-- <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> -->
+                                <!-- </div>
+                                <div class="button"> -->
+                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+<!--                                 </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- My Books Section -->
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Child's Books</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Current Page</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>First Book</td>
+                                <td>Chris</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Second Book</td>
+                                <td>Scott</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Progres Section -->
+    <section id="features" class="features text-center">
+    <!-- <section id="download" class="download bg-primary text-center"> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Child's Progress</h2>
+                    
+                    <form>
+                        <input list="period" name="progress" >
+
+                        <datalist id="period">
+                            <option value="Current Week">
+                            <option value="Previous Week">
+                            <option value="Last 30 days">
+                            <option value="Last 90 days">
+                        </datalist>
+
+
+                        <input type="submit" name="report" value="Go">
+                    </form>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Title</th>
+                                <th>Time (minutes)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1/12/2017</td>
+                                <td>First Book</td>
+                                <td>35</td>
+                            </tr>
+                            <tr>
+                                <td>1/13/2017</td>
+                                <td>First Book</td>
+                                <td>25</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td> </td>
+                                <td>Total Minutes:</td>
+                                <td>60</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<!--     <section class="cta">
+        <div class="cta-content">
+            <div class="container">
+                <h2>Stop waiting.<br>Start building.</h2>
+                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section> -->
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+            <ul class="list-inline list-social">
+                <li class="social-twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-google-plus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>

@@ -1,0 +1,63 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\wahle\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\wahle\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\wahle\bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Git\cmd;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\Git\cmd;C:\Program Files\nodejs;C:\jruby-9.0.0.0\bin;C:\Users\wahle\AppData\Local\Microsoft\WindowsApps;C:\Users\wahle\AppData\Roaming\npm;C:\Program Files\MongoDB\Server\3.4\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  0.21.3
+
+Node version: 
+  6.8.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "simple",
+    "version": "1.0.0",
+    "description": "Simple example",
+    "main": "server.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
+    },
+    "keywords": [
+      "simple"
+    ],
+    "author": "Chris",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.17.1",
+      "cookie-parser": "^1.4.3",
+      "dateutil": "^0.1.0",
+      "express": "^4.15.2",
+      "express-handlebars": "^3.0.0",
+      "express-session": "^1.15.1",
+      "method-override": "^2.3.7",
+      "mysql": "^2.13.0"
+    },
+    "devDependencies": {},
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/cwahlers/reader.git"
+    },
+    "bugs": {
+      "url": "https://github.com/cwahlers/reader/issues"
+    },
+    "homepage": "https://github.com/cwahlers/reader#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: getaddrinfo ENOENT registry.yarnpkg.com:443
+      at Object.exports._errnoException (util.js:1026:11)
+      at errnoException (dns.js:33:15)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)

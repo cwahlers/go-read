@@ -1,0 +1,190 @@
+   <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <!-- <h1>Log your reading</h1> -->
+                            <img src="/assets/img/goRead.png" alt="GO Read!" class="img-responsive">
+                            <br>
+                            
+                            <form class="create-update-form" action="/readers/log" method="POST">
+                                <label>Book: 
+                                    <select name="book" >
+                                        {{#each books}}
+                                            <option value= {{this.book_id}} > {{this.title}} </option>
+                                            <!-- <option value="1">First Book</option>
+                                            <option value="2">Second Book</option>
+                                            <option value="3">Third Book</option>
+                                            <option value="4">Fourth Book</option> -->
+                                        {{/each}}
+                                    </select>
+                                </label>
+
+
+                                <h2 class="goal">Goal:</h2>
+                                <div class="display-time">
+                                    <input class="time-goal" type="number" name="time" value="20"> Minutes
+                                    
+                                </div> 
+                                <input class="total-time" style="display:none;" type="number" name="totalTime">      
+                                <br>  
+                                <br>                          
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="start btn btn-default">
+                                        <span class="glyphicon glyphicon-play"></span> Start</button>
+                                    <button type="button" class="pause btn btn-default">
+                                        <span class="glyphicon glyphicon-pause"></span> Pause</button>
+                                    <button type="submit" class="stop btn btn-default">
+                                        <span class="glyphicon glyphicon-stop"></span> Stop</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="device-container">
+                        <!-- <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen"> -->
+                                    
+
+                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                                    <!-- <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> -->
+                                <!-- </div>
+                                <div class="button"> -->
+                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+<!--                                 </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- My Books Section -->
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">My Books</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Current Page</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each books}}
+                                <tr>
+                                    <td> {{this.title}} </td>
+                                    <td> {{this.author}} </td>
+                                    <td> {{this.current_page}} </td>
+                                </tr>
+                            {{/each}}
+                            <!-- <tr>
+                                <td>First Book</td>
+                                <td>Chris</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Second Book</td>
+                                <td>Scott</td>
+                                <td>0</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Progres Section -->
+    <section id="features" class="features text-center">
+    <!-- <section id="download" class="download bg-primary text-center"> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">My Progress</h2>
+                    
+                    <form>
+                        <select name="period">
+                            <option value="1">Current Week</option>
+                            <option value="2">Previous Week</option>
+                            <option value="3">Last 30 days</option>
+                            <option value="4">Last 90 days</option>
+                        </select>
+                        <input type="submit" name="report" value="Go">
+                    </form>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Title</th>
+                                <th>Time (minutes)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {{#each logs}}
+                                <tr>
+                                    <td> {{this.log_created}} </td>
+                                    <td> {{this.title}} </td>
+                                    <td> {{this.time_lapsed}} </td>
+                                </tr>  
+                            {{/each}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td> </td>
+                                <td>Total Minutes:</td>
+                                <td> {{sum}} </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<!--     <section class="cta">
+        <div class="cta-content">
+            <div class="container">
+                <h2>Stop waiting.<br>Start building.</h2>
+                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section> -->
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+            <ul class="list-inline list-social">
+                <li class="social-twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-google-plus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+
+    <!-- Time JavaScript -->
+    <script src="/assets/js/time.js"></script>
