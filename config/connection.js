@@ -14,16 +14,27 @@ console.log('--------------the environment we are using----------------');
 console.log(app.settings.env);
 console.log('--------------the environment we are using----------------');
 
-if (app.settings.env == 'development'){
-  var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "simple_db"
-  });
-}else {
-  var connection = mysql.createConnection(process.env.JAWSDB_URL);
-}
+// if (app.settings.env == 'development'){
+//   var connection = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "simple_db"
+//   });
+// }else {
+//   var connection = mysql.createConnection(process.env.JAWSDB_URL);
+// }
+  var connection;
+  if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+  } else {
+    connection = mysql.createConnection({
+     host: "localhost",
+     user: "root",
+     password: "",
+     database: "simple_db"
+   });
+  };
 
 // Make connection.
 connection.connect(function(err) {

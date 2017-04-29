@@ -1,5 +1,4 @@
-CREATE DATABASE simple_db;
-USE simple_db;
+USE dt12issfv05mzmvu;
 
 CREATE TABLE users
 (
