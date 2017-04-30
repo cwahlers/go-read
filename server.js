@@ -7,6 +7,7 @@ var session = require("express-session");
 var port = process.env.PORT || 3000;
 var app = module.exports = express(); 
 var json = require('jsonify');
+var bcrypt = require('bcryptjs');
 
 //For Mobile Connection
 var mysql = require('mysql')
@@ -104,9 +105,51 @@ app.use("/parents", parentsController);
               res.redirect('/users/sign-in')
             }
       });
+    });
   });
 
+  app.post("/mobile/log", function(req, res) {
+    console.log("Posting time");
+    var today = new Date();
+    var currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    console.log(currentDate);
+    var totalTime = parseInt( req.body.totalTime );
+    var query = "SELECT * FROM logs WHERE user_id = ? AND book_id = ? AND created = ? ";
+    console.log("Query: " + query);
+    //console.log("Attributes: " + req.session.user_id + "  " + req.body.book + " " + currentDate  )
+    console.log("Attributes: " + req.body.book + " " + currentDate  )
+    connection.query(query, [ 2, req.body.book, currentDate ], function(err, logs){
+      if( logs == "" ){
+        //Assumes no time logged
+        query = "INSERT INTO logs (user_id, book_id, created, time_lapsed ) VALUES (?, ?, ?, ?)"
+        console.log("Insert Query: " + query);
+        connection.query(query, [ 2, req.body.book, currentDate, req.body.totalTime ], function(err, response) {
+          if (err) res.send('501');
+          else {
 
-  });
+            console.log("Refresh Readers Page - Insert");
+            //res.redirect("/readers");
+            res.send('Posted successfully');
+          }; //After posting Insert
+        });
+      }else {
+        console.log("DB Time: " + logs[0].time_lapsed);
+        console.log("Lapse Time: " + totalTime );
+        totalTime += parseInt(logs[0].time_lapsed);
+        console.log("Total time: " + totalTime);
+        query = "UPDATE logs SET time_lapsed = ? WHERE user_id = ? AND book_id = ? AND created = ?"
+        console.log("Update Query: " + query);
+        connection.query(query, [ totalTime, 2, req.body.book, currentDate ], function(err, response) {
+          if (err) res.send('600');
+          else {
+            console.log("Refresh Readers Page - Update");
+            //res.redirect("/readers");
+            res.send('Posted successfully');
+          };
+        });
+      };
+
+    });
+  });  
 
 app.listen(port);
