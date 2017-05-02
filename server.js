@@ -65,8 +65,8 @@ app.use("/parents", parentsController);
     });
   });
 
-   app.post("/mobile/login", function(req, res) {
-    console.log("Mobile post login");
+  app.post("/mobile/login", function(req, res) {
+    //console.log("Mobile post login");
 
     var query = "SELECT * FROM users WHERE email = ?";
 
@@ -77,72 +77,63 @@ app.use("/parents", parentsController);
 
         bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
             if (result == true){
-              console.log("Logged into the app");
-              req.session.logged_in = true;
-              req.session.user_id = response[0].id;
-              req.session.user_email = response[0].email;
-              req.session.usertype = response[0].usertype;
-              req.session.username = response[0].username;
-
-              console.log("Usertype: " + response[0].usertype );
-              switch (response[0].usertype){
-                  case 'R':
-                    req.session.is_reader = true;
-                    req.session.is_parent = false;
-                    res.redirect('/readers');
-                    break;
-                  case 'P':
-                    req.session.is_reader = false;
-                    req.session.is_parent = true;
-                    res.redirect('/parents');
-                    break;
-                  case 'T':
-                    res.redirect('/readers');
-                    break;
-                }
-
+              //console.log("Logged into the app");
+              var userInfo = {
+                logged_in: true,
+                user_id: response[0].id,
+                user_email: response[0].email,
+                usertype: response[0].usertype,
+                username: response[0].username,
+                is_reader: true,
+                is_parent: false,
+              };
+              res.json(userInfo);
             }else{
-              res.redirect('/users/sign-in')
+              var userInfo = {
+                logged_in: false,
+                error: 'Invalid e-mail or password',
+                isLoading: false
+              }
+              res.json(userInfo);
             }
       });
     });
   });
 
   app.post("/mobile/log", function(req, res) {
-    console.log("Posting time");
+    //console.log("Posting time");
     var today = new Date();
     var currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    console.log(currentDate);
+    //console.log(currentDate);
     var totalTime = parseInt( req.body.totalTime );
     var query = "SELECT * FROM logs WHERE user_id = ? AND book_id = ? AND created = ? ";
-    console.log("Query: " + query);
+    //console.log("Query: " + query);
     //console.log("Attributes: " + req.session.user_id + "  " + req.body.book + " " + currentDate  )
-    console.log("Attributes: " + req.body.book + " " + currentDate  )
-    connection.query(query, [ 2, req.body.book, currentDate ], function(err, logs){
+    connection.query(query, [ req.body.user_id, req.body.book, currentDate ], function(err, logs){
       if( logs == "" ){
         //Assumes no time logged
         query = "INSERT INTO logs (user_id, book_id, created, time_lapsed ) VALUES (?, ?, ?, ?)"
-        console.log("Insert Query: " + query);
-        connection.query(query, [ 2, req.body.book, currentDate, req.body.totalTime ], function(err, response) {
+        //console.log("Insert Query: " + query);
+        connection.query(query, [ req.body.user_id, req.body.book, currentDate, req.body.totalTime ], function(err, response) {
           if (err) res.send('501');
           else {
 
-            console.log("Refresh Readers Page - Insert");
+            //console.log("Refresh Readers Page - Insert");
             //res.redirect("/readers");
             res.send('Posted successfully');
           }; //After posting Insert
         });
       }else {
-        console.log("DB Time: " + logs[0].time_lapsed);
-        console.log("Lapse Time: " + totalTime );
+        //console.log("DB Time: " + logs[0].time_lapsed);
+        //console.log("Lapse Time: " + totalTime );
         totalTime += parseInt(logs[0].time_lapsed);
-        console.log("Total time: " + totalTime);
+        //console.log("Total time: " + totalTime);
         query = "UPDATE logs SET time_lapsed = ? WHERE user_id = ? AND book_id = ? AND created = ?"
-        console.log("Update Query: " + query);
-        connection.query(query, [ totalTime, 2, req.body.book, currentDate ], function(err, response) {
+        //console.log("Update Query: " + query);
+        connection.query(query, [ totalTime, req.body.user_id, req.body.book, currentDate ], function(err, response) {
           if (err) res.send('600');
           else {
-            console.log("Refresh Readers Page - Update");
+            //console.log("Refresh Readers Page - Update");
             //res.redirect("/readers");
             res.send('Posted successfully');
           };
