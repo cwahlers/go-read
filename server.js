@@ -83,54 +83,54 @@ app.use("/parents", parentsController);
   app.post("/mobile/login", function(req, res) {
     console.log("Mobile post login");
     console.log(req.body);
-    console.log("The email: " + req.body.email);
-    console.log("The password: " + req.body.password);
+    // console.log("The email: " + req.body.email);
+    // console.log("The password: " + req.body.password);
 
-    var query = "SELECT * FROM users WHERE email = ?";
+    // var query = "SELECT * FROM users WHERE email = ?";
 
-    connection.query(query, [ req.body.email ], function(err, response) {
-      console.log(response);
-      if (response.length == 0){
-        var failed = {
-                  error: 'Invalid e-mail',
-                  userInfo: {
-                    logged_in: false,
-                    isLoading: false,
-                  },
-                };
-        res.json(failed);
-      }
-        bcrypt.genSalt(10, function(err, salt) {
-          bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
-              console.log(result);
-              if (result == true){
-                //console.log("Logged into the app");
-                var resFinal = {
-                    userInfo: {
-                      logged_in: true,
-                      user_id: response[0].id,
-                      user_email: response[0].email,
-                      usertype: response[0].usertype,
-                      username: response[0].username,
-                      is_reader: true,
-                      is_parent: false,
-                    }
-                  };
-                  console.log(resFinal);
-                res.json(resFinal);
-              }else{
-                var resFinal = {
-                  error: 'Invalid e-mail or password',
-                  userInfo: {
-                    logged_in: false,
-                    isLoading: false,
-                  },
-                };
-                res.json(resFinal);
-              }
-        });
-      });
-    });
+    // connection.query(query, [ req.body.email ], function(err, response) {
+    //   console.log(response);
+    //   if (response.length == 0){
+    //     var failed = {
+    //               error: 'Invalid e-mail',
+    //               userInfo: {
+    //                 logged_in: false,
+    //                 isLoading: false,
+    //               },
+    //             };
+    //     res.json(failed);
+    //   }
+    //     bcrypt.genSalt(10, function(err, salt) {
+    //       bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
+    //           console.log(result);
+    //           if (result == true){
+    //             //console.log("Logged into the app");
+    //             var resFinal = {
+    //                 userInfo: {
+    //                   logged_in: true,
+    //                   user_id: response[0].id,
+    //                   user_email: response[0].email,
+    //                   usertype: response[0].usertype,
+    //                   username: response[0].username,
+    //                   is_reader: true,
+    //                   is_parent: false,
+    //                 }
+    //               };
+    //               console.log(resFinal);
+    //             res.json(resFinal);
+    //           }else{
+    //             var resFinal = {
+    //               error: 'Invalid e-mail or password',
+    //               userInfo: {
+    //                 logged_in: false,
+    //                 isLoading: false,
+    //               },
+    //             };
+    //             res.json(resFinal);
+    //           }
+    //     });
+    //   });
+    // });
   });
 
   app.post("/mobile/log", function(req, res) {
