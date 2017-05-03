@@ -89,6 +89,7 @@ app.use("/parents", parentsController);
     var query = "SELECT * FROM users WHERE email = ?";
 
     connection.query(query, [ req.body.email ], function(err, response) {
+      console.log(response);
       if (response.length == 0){
         var failed = {
                   error: 'Invalid e-mail',
@@ -101,6 +102,7 @@ app.use("/parents", parentsController);
       }
         bcrypt.genSalt(10, function(err, salt) {
           bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
+              console.log(result);
               if (result == true){
                 //console.log("Logged into the app");
                 var resFinal = {
@@ -114,6 +116,7 @@ app.use("/parents", parentsController);
                       is_parent: false,
                     }
                   };
+                  console.log(resFinal);
                 res.json(resFinal);
               }else{
                 var resFinal = {
