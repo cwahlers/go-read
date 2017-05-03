@@ -78,16 +78,18 @@ app.use("/parents", parentsController);
           bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
               if (result == true){
                 //console.log("Logged into the app");
-                var userInfo = {
-                  logged_in: true,
-                  user_id: response[0].id,
-                  user_email: response[0].email,
-                  usertype: response[0].usertype,
-                  username: response[0].username,
-                  is_reader: true,
-                  is_parent: false,
-                };
-                res.json(userInfo);
+                var resFinal = {
+                    userInfo: {
+                      logged_in: true,
+                      user_id: response[0].id,
+                      user_email: response[0].email,
+                      usertype: response[0].usertype,
+                      username: response[0].username,
+                      is_reader: true,
+                      is_parent: false,
+                    }
+                  };
+                res.json(resFinal);
               }else{
                 var userInfo = {
                   logged_in: false,
