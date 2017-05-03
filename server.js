@@ -67,6 +67,8 @@ app.use("/parents", parentsController);
 
   app.post("/mobile/login", function(req, res) {
     console.log("Mobile post login");
+    console.log("email: " + req.body.email);
+    console.log("Pass: " + req.body.password);
 
     var query = "SELECT * FROM users WHERE email = ?";
 
