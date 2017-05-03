@@ -74,28 +74,29 @@ app.use("/parents", parentsController);
       if (response.length == 0){
         res.redirect('/users/sign-in')
       }
-
-        bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
-            if (result == true){
-              //console.log("Logged into the app");
-              var userInfo = {
-                logged_in: true,
-                user_id: response[0].id,
-                user_email: response[0].email,
-                usertype: response[0].usertype,
-                username: response[0].username,
-                is_reader: true,
-                is_parent: false,
-              };
-              res.json(userInfo);
-            }else{
-              var userInfo = {
-                logged_in: false,
-                error: 'Invalid e-mail or password',
-                isLoading: false
+        bcrypt.genSalt(10, function(err, salt) {
+          bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
+              if (result == true){
+                //console.log("Logged into the app");
+                var userInfo = {
+                  logged_in: true,
+                  user_id: response[0].id,
+                  user_email: response[0].email,
+                  usertype: response[0].usertype,
+                  username: response[0].username,
+                  is_reader: true,
+                  is_parent: false,
+                };
+                res.json(userInfo);
+              }else{
+                var userInfo = {
+                  logged_in: false,
+                  error: 'Invalid e-mail or password',
+                  isLoading: false
+                }
+                res.json(userInfo);
               }
-              res.json(userInfo);
-            }
+        });
       });
     });
   });
