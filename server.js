@@ -66,13 +66,20 @@ app.use("/parents", parentsController);
   });
 
   app.post("/mobile/login", function(req, res) {
-    //console.log("Mobile post login");
+    console.log("Mobile post login");
 
     var query = "SELECT * FROM users WHERE email = ?";
 
     connection.query(query, [ req.body.email ], function(err, response) {
       if (response.length == 0){
-        res.redirect('/users/sign-in')
+        var failed = {
+                  error: 'Invalid e-mail',
+                  userInfo: {
+                    logged_in: false,
+                    isLoading: false,
+                  },
+                };
+        res.json(failed);
       }
         bcrypt.genSalt(10, function(err, salt) {
           bcrypt.compare(req.body.password, response[0].password_hash, function(err, result) {
