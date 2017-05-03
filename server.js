@@ -91,12 +91,14 @@ app.use("/parents", parentsController);
                   };
                 res.json(resFinal);
               }else{
-                var userInfo = {
-                  logged_in: false,
+                var resFinal = {
                   error: 'Invalid e-mail or password',
-                  isLoading: false
-                }
-                res.json(userInfo);
+                  userInfo: {
+                    logged_in: false,
+                    isLoading: false,
+                  },
+                };
+                res.json(resFinal);
               }
         });
       });
