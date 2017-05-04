@@ -1,15 +1,17 @@
-<header>
+<section id="sign_In">
   <div class="container">
     <div class="row">
       <div class="col-sm-7">
-        <div class="header-content">
-            <div class="header-content-inner">
+        <!-- <div class="header-content">
+            <div class="header-content-inner"> -->
+            <div id="signInBox">
+                          <h1>Log In!</h1>
               <!-- this is the sign_in.handlebars file inside the users folder of the views folder
               views/users/sign_in.handlebars -->
               <form class="create-update-form" action="/users/login" method="POST">
 
                 <div class="form-group">
-                  <label for="em">Email:</label>
+                  <label id="emailSignin" for="em">Email:</label>
                   <input type="text" id="em" name="email">
                 </div>
 
@@ -20,9 +22,10 @@
 
                 <button type="submit">Sign In</button>
               </form>
+              
             </div>
-        </div>
+   <!--      </div> -->
       </div>
     </div>
   </div>
-</header>
+</section>

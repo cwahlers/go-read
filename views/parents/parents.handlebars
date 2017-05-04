@@ -1,15 +1,20 @@
-   <header>
+<section id="goParent">
         <div class="container">
             <div class="row">
-                <div class="col-sm-7">
-                    <div class="header-content">
-                        <div class="header-content-inner">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-content">
+                        <div class="section-content-inner">
                             <h2 class="section-heading">My Kids</h2>
+                                    <form action="/kids/add" method="POST">
+                                        <input type="text" name="kid_name" placeholder="what's the name of the kid?" /><br />
+                                        <input type="text" name="kid_email" placeholder="what's the email of the kid?" /><br />
+                                        <input type="submit" value="Add Kid"></input>
+                                    </form>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>e-mail</th>
+                                        <th>E-mail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,33 +48,68 @@
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- My Books Section -->
-    <section id="download" class="download bg-primary text-center">
+    <section id="kidsBooks" class="kidsBooks bg-primary text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Child's Books</h2>
+                    <h2 class="section-heading">Kid's Books</h2>
+                            <form class="create-update-form" action="/kids/log" method="POST">
+                                <label>My Kids: 
+                                    <select name="kid" >
+
+                                        {{#each kids}}
+                                            <option value="{{this.email}}"> {{this.username}} </option>
+                                         {{/each}} 
+
+                                       <!--      <option value= 1 > Child 1 </option>
+                                            <option value= 2 > Child 2 </option>
+                                            <option value= 3 > Child 3 </option>
+                                            <option value= 4 > Child 4 </option>
+                                            <option value= 5 > Child 5 </option> -->
+                        
+                                    </select>
+                                </label>
+                                     <input type="text" name="kid_book" placeholder="what's the name of the book?" /><br />
+                                     <input type="submit" value="Add Book"></input>
+                                </form>
+
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Author</th>
+                                <th>Kid's Name</th>
+                                <th>Book Title</th>
                                 <th>Current Page</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>First Book</td>
+
+                            {{#each kids}}
+                                <tr>
+                                    <td> {{this.username}} </td>
+                                    <td> {{this.title}} </td>
+                                    <td> {{this.current_page}} </td>
+                                </tr>
+                            {{/each}} 
+
+                            <!-- <tr>
                                 <td>Chris</td>
+                                <td>First Book</td>
                                 <td>100</td>
                             </tr>
                             <tr>
+                                <td>Chris</td>
                                 <td>Second Book</td>
-                                <td>Scott</td>
-                                <td>0</td>
+                                <td>70</td>
                             </tr>
+                            <tr>
+                                <td>Jon</td>
+                                <td>First Book</td>
+                                <td>0</td>
+                            </tr> -->
+
                         </tbody>
                     </table>
                 </div>
@@ -78,12 +118,12 @@
     </section>
 
     <!-- My Progres Section -->
-    <section id="features" class="features text-center">
+    <section id="kidsProgress" class="kidsProgress text-center">
     <!-- <section id="download" class="download bg-primary text-center"> -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Child's Progress</h2>
+                    <h2 class="section-heading">Kid's Progress</h2>
                     
                     <form>
                         <input list="period" name="progress" >
@@ -107,23 +147,22 @@
                                 <th>Time (minutes)</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1/12/2017</td>
-                                <td>First Book</td>
-                                <td>35</td>
-                            </tr>
-                            <tr>
-                                <td>1/13/2017</td>
-                                <td>First Book</td>
-                                <td>25</td>
-                            </tr>
+
+                            {{#each logs}}
+                                <tr>
+                                    <td> {{this.log_created}} </td>
+                                    <td> {{this.title}} </td>
+                                    <td> {{this.time_lapsed}} </td>
+                                </tr>  
+                            {{/each}}
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td> </td>
                                 <td>Total Minutes:</td>
-                                <td>60</td>
+                                <td> {{sum}} </td>
                             </tr>
                         </tfoot>
                     </table>
@@ -132,33 +171,6 @@
         </div>
     </section>
 
-
-
-
-
-<!--     <section class="cta">
-        <div class="cta-content">
-            <div class="container">
-                <h2>Stop waiting.<br>Start building.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </section> -->
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
-            <ul class="list-inline list-social">
-                <li class="social-twitter">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li class="social-facebook">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li class="social-google-plus">
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-            </ul>
-        </div>
-    </section>
+    <script type="text/javascript" >
+            var user_id={{this.userid}}
+    </script>

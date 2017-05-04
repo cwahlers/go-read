@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Go Read" content="">
-    <meta name="Goodfellas" content="">
 
     <title>GO Read!</title>
 
@@ -20,19 +21,12 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/assets/lib/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/lib/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="/assets/lib/device-mockups/device-mockups.min.css">
+    <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/lib/device-mockups/device-mockups.min.css">
 
     <!-- Theme CSS -->
     <link href="/assets/css/new-age.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -50,14 +44,14 @@
                     {{#if is_reader}}
                         <a class="navbar-brand page-scroll" href="#page-top">GO Read!</a>
                     {{else if is_parent}}
-                        <a class="navbar-brand page-scroll" href="#page-top">My Kids!</a>
+                        <a class="navbar-brand page-scroll" href="#page-top">GO Read!</a>
                     {{else}}
                         <a class="navbar-brand page-scroll" href="#page-top">My Classes!</a>
                     {{/if}}
                     <a class="navbar-brand page-scroll" href="/users/sign-out">Sign Out</a>
                 {{else}}
-                  <a class="navbar-brand page-scroll" href="/users/sign-in">Sign In</a>
-                  <a class="navbar-brand page-scroll" href="/users/new">Register</a>
+                  <a class="navbar-brand page-scroll" href="/users/sign-in">SIGN IN</a>
+                  <a class="navbar-brand page-scroll" href="/users/new">REGISTER</a>
                 {{/if}}
 
 
@@ -69,32 +63,38 @@
                     
                     {{#if is_reader}}
                         <li>
-                            <a class="page-scroll" href="#download">My Books</a>
+                            <a class="page-scroll" href="#goRead">GO Read!</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#features">My Progress</a>
+                            <a class="page-scroll" href="#myBooks">My Books</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#myProgress">My Progress</a>
                         </li>
                     {{else if is_parent}}
                         <li>
-                            <a class="page-scroll" href="#download">My Kids Books</a>
+                            <a class="page-scroll" href="#goParent">My Kids</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#features">Kids Progress</a>
+                            <a class="page-scroll" href="#kidsBooks">Kid's Books</a>
+                        </li>
+                       <li>
+                            <a class="page-scroll" href="#kidsProgress">Kid's Progress</a>
                         </li>
                     {{else}}
                         <li>
-                            <a class="page-scroll" href="#download">For Parents</a>
+                            <a class="page-scroll" href="#reader">Reader</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#features">For Educators</a>
+                            <a class="page-scroll" href="#parent">Parent</a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="#teacher">Teacher</a>
                         </li>
 
                     {{/if}}
 
-
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -105,25 +105,15 @@
     {{{ body }}}
 
     <footer>
-        <div class="container">
-            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
+        <div id="footernum">
+            <img src="/assets/images/goReadbgblack.png" alt="GO Read!" class="img-responsive">
+            <p >&copy; 2017</p>
         </div>
     </footer>
 
-    <!-- jQuery -->
+<!-- jQuery -->
     <!-- <script src="/assets/lib/jquery/jquery.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,6 +123,8 @@
 
     <!-- Theme JavaScript -->
     <script src="/assets/js/new-age.min.js"></script>
+
+    <script src="/assets/js/parent.js"></script>
 
 
 
