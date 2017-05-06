@@ -10,3 +10,9 @@ CREATE TABLE users
   PRIMARY KEY (id)
 );
 
+
+
+ALTER TABLE books
+ADD google_id varchar(255),
+ADD pages int;
+
