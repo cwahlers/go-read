@@ -58,12 +58,10 @@
                     <h2 class="section-heading">Kid's Books</h2>
                             <form class="create-update-form" action="/kids/log" method="POST">
                                 <label>My Kids: 
-                                    <select id="selectKids" name="kid" onchange="selectKidBooks()">
-
-
+                                    <select name="kid" >
 
                                         {{#each kids}}
-                                            <option value="{{this.kids_id}}"> {{this.username}} </option>
+                                            <option value="{{this.email}}"> {{this.username}} </option>
                                          {{/each}} 
 
                                        <!--      <option value= 1 > Child 1 </option>
@@ -86,18 +84,16 @@
                                 <th>Current Page</th>
                             </tr>
                         </thead>
-                        <tbody id="kids-books">
+                        <tbody>
 
-                            {{#each kidbooks}}
+                            {{#each kids}}
                                 <tr>
-                                    <td> {{this.user_id}} </td>
+                                    <td> {{this.username}} </td>
                                     <td> {{this.title}} </td>
-                                  <!--   <td> {{this.current_page}} </td> -->
+                                    <td> {{this.current_page}} </td>
                                 </tr>
                             {{/each}} 
 
-                          
-                
                             <!-- <tr>
                                 <td>Chris</td>
                                 <td>First Book</td>
@@ -152,7 +148,7 @@
                             </tr>
                         </thead>
 
-                         <tbody id="kids-logs">
+                        <tbody>
 
                             {{#each logs}}
                                 <tr>
@@ -176,5 +172,5 @@
     </section>
 
     <script type="text/javascript" >
-            var user_id={{this.user_id}}
+            var user_id={{this.userid}}
     </script>
