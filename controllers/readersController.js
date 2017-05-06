@@ -130,7 +130,7 @@ router.post('/addbook', function(req, res) {
           else {
             console.log("Refresh Readers Page - Inserted Book");
             console.log("New Book Id: " , newBook.insertId);
-            assignBook(req.body.user_id, newBook.insertID);
+            assignBook(req.body.user_id, newBook.insertId);
 
             //res.redirect("/readers");
             return;
